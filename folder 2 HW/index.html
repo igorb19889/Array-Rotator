@@ -1,0 +1,95 @@
+
+<!-- 
+
+AD ROTATOR:
+
+        HTML: semantic
+         CSS: box & fonts
+          JS: 
+             timers
+             function
+             array
+             DOM
+
+             
+ -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Rotator</title>
+    <style>
+        body {
+            background-color: #123;
+        }
+        #ad {
+            border: 1px solid gray;
+            color: white;
+            padding: 1em;
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+    <div id="ad">
+       <!-- <img src="images/image01.jpeg">
+       <img src="images/image02.jpeg">
+       <img src="images/image03.jpeg"> -->
+    </div>
+
+    <script>
+
+
+
+
+
+        let adTitles = [
+            "this is the first",
+            "this is the second",
+            "this is the third"
+        ]
+
+        let adTexts = [
+            "text first",
+            "text second",
+            "text third",
+        ]
+
+        // HW1: create another array, with the images for each ad rotate the images in sync with texts
+        // HW2: add an array of image sources
+        let adImages = [
+            
+            'https://fastly.picsum.photos/id/219/400/500.jpg?hmac=ih_j4qa3R0SJNq4k6G-wEO9CAJ5fajEktWFYeEsZjUc',
+            'https://fastly.picsum.photos/id/582/400/500.jpg?hmac=-G0stT2tGFHhkUjx70oZpLxpxwJRmNFwtBmBjWCMBkI',
+            'https://fastly.picsum.photos/id/702/400/500.jpg?hmac=Ln6iJM8mqZQoJ-ACmDMhMCLRml1w18BXLexYS53Fcp0',
+            
+        ]
+
+        let adIndex = 0;
+
+        function showAd() {
+              ad.innerHTML = `<h1>${adTitles[adIndex]}</h1>
+                               <p>${adTexts[adIndex]}</p>
+                              <img src="${adImages[adIndex]}">`
+        }
+
+        function rotateAds() {
+            let lastTitle = adTitles.pop();
+            adTitles.unshift(lastTitle);
+
+            let lastText = adTexts.pop();
+            adTexts.unshift(lastText);
+
+            let lastImage = adImages.pop();
+            adImages.unshift(lastImage);
+
+            showAd();
+        }
+
+        setInterval(rotateAds, 3000);
+        showAd();
+    </script>
+</body>
+</html>
